@@ -1,0 +1,8 @@
+logs/*
+!.gitkeep
+docuro
+*.esproj/*
+build/*
+node_modules/*
+build.sh
+fig.yml

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="docuro">
+  <head>
+    <meta charset="utf-8">
+    <title>docuro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Felix Imobersteg">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  </head>
+
+  <body>
+
+    <div class="container">
+        <div ng-include="template" ng-controller="MastheadController"></div>
+
+        <div id="view" ng-view></div>
+
+        <div class="container-bottom"></div>
+        <div ng-include="template" ng-controller="FooterController"></div>
+    </div> 
+
+    <!--Load javacript-->
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/spin.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="assets/js/angularjs/1.2.6/angular.min.js"></script>
+    <script src="assets/js/angularjs/1.2.6/angular-resource.min.js"></script>
+    <script src="assets/js/angularjs/1.2.6/angular-route.min.js"></script>
+
+    <script src="assets/js/jquery.gritter.min.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <script src="assets/js/legend.js"></script>
+
+    <script src="assets/js/app.js"></script>
+
+  </body>
+</html>
