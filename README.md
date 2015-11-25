@@ -1,82 +1,86 @@
-#docuro
+# docuro
 docuro is a web interface to interact with the docker Remote API. It is based on [crosbymichael/dockerui](https://github.com/crosbymichael/dockerui).
 
 
 ![Screenshot](screenshot.png)
 
 
-##Usage
+## Usage
 
-
-###Quickstart using Docker
-<pre>
+### Quickstart using Docker
+```
 docker run -d -p 10443:10443 -v /var/run/docker.sock:/var/run/docker.sock n3r0ch/docuro
-</pre>
+```
 
 Open your browser to http://<dockerd host ip>:10443
 
-Bind mounting the unix socket into the docuro container is much more secure than exposing your docker daemon over tcp. 
+Bind mounting the unix socket into the docuro container is much more secure than exposing your docker daemon over tcp.
 
 
-###Quickstart using fig
+### Quickstart using fig
+
 Add the following lines to your `fig.yml`.
-<pre>
+```
 docuro:
   image: n3r0ch/docuro
   ports:
     - "10443:10443"
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-</pre>
+```
 
 
-###Build and run local
-<pre>
+### Build and run local
+
+```
 make install
 docker run -d -p 10443:10443 -v /var/run/docker.sock:/var/run/docker.sock n3r0ch/docuro
-</pre>
+```
 
 
-####Additional Requirements
+#### Additional Requirements
+
 * Grunt
 * make
 
 
-##Login
-<pre>
+## Login
+```
 User:		docuro
 Password:	docuro
-</pre>
+```
 
-##Changing configuration
+## Changing configuration
 
+### Authorization
 
-###Authorization
 1. Replace `.htpasswd` file at docuro config location folder (e.g. ./config/auth)
 2. Generate new credentials
 	- via `htpasswd` shell command
-	<pre>
+	```
 	htpasswd -c ~/dockerui/.htpasswd [username]
-	</pre>
+	```
 	- or via one of these websites [htpasswd generators](http://goo.gl/yLfKmV) (opens google search)
 3. Rebuild and rerun Docker container
 
 
-###Replace SSL certificates
+### Replace SSL certificates
+
 1. Replace the folder for SSL certificates docuro config folder (e.g. ./config/auth)
 2. Generate new certificates
-	<pre>
+	```
 	openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=US/ST=Unknown/L=Unknown/O=Dis/CN=localhost" -keyout ~/dockerui/ssl/server.key  -out ~/dockerui/ssl/server.crt
-	</pre>
+	```
 	**PLEASE NOTE: Key and certificate file names (`server.key` and `server.crt`) should not be changed**
 
 3. Rebuild and rerun Docker container
 
 
-##License
+## License
+
 The MIT License (MIT)
 
-Copyright (c) 2014 Felix Imobersteg
+Copyright (c) 2015 Felix Imobersteg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
